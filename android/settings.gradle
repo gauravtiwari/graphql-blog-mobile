@@ -1,0 +1,3 @@
+rootProject.name = 'GraphQLBlogMobile'
+
+include ':app'
