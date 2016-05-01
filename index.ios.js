@@ -1,10 +1,7 @@
 'use strict';
 import React, {
   AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View
+  Component
 } from 'react-native';
 
 import Posts from './src/components/Posts';

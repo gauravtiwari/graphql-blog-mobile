@@ -9,7 +9,7 @@ import React, {
 
 import Relay from 'react-relay';
 
-class PostsPreview extends Component {
+class PostsPreviewItem extends Component {
   render() {
     const { post } = this.props;
     return (
@@ -38,10 +38,9 @@ const styles = StyleSheet.create({
   },
 });
 
+module.exports = PostsPreviewItem;
 
-module.exports = PostsPreview;
-
-const PostsPreviewContainer = Relay.createContainer(PostsPreview, {
+const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem, {
   initialVariables: {
     count: 1000,
   },
@@ -64,4 +63,4 @@ const PostsPreviewContainer = Relay.createContainer(PostsPreview, {
   },
 });
 
-module.exports = PostsPreviewContainer;
+module.exports = PostsPreviewItemContainer;
