@@ -4,6 +4,7 @@ import React, {
   Component
 } from 'react-native';
 
+import 'babel-polyfill';
 import Posts from './src/components/Posts';
 import PostsRoute from './src/routes/PostsRoute';
 import Relay from 'react-relay';

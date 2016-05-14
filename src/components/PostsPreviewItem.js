@@ -9,7 +9,11 @@ import React, {
 
 import Relay from 'react-relay';
 
-class PostsPreviewItem extends Component {
+export class PostsPreviewItem extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const { post } = this.props;
     return (
@@ -38,12 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = PostsPreviewItem;
-
-const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem, {
-  initialVariables: {
-    count: 1000,
-  },
+export const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem, {
   fragments: {
     post: () => Relay.QL`
       fragment on Post {
@@ -52,6 +51,7 @@ const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem, {
         slug,
         excerpt,
         voted,
+        user_id,
         created_at,
         comments_count,
         votes_count,
@@ -62,5 +62,3 @@ const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem, {
     `,
   },
 });
-
-module.exports = PostsPreviewItemContainer;

@@ -8,7 +8,11 @@ import Relay from 'react-relay';
 import PostsPreviewList from './PostsPreviewList';
 import PostsPreviewItem from './PostsPreviewItem';
 
-class Posts extends Component {
+export class Posts extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const { root } = this.props;
     return (
@@ -23,9 +27,7 @@ class Posts extends Component {
   }
 }
 
-module.exports = Posts;
-
-const PostsContainer = Relay.createContainer(Posts, {
+export const PostsContainer = Relay.createContainer(Posts, {
   initialVariables: {
     count: 20,
     order: '-id',
@@ -50,5 +52,3 @@ const PostsContainer = Relay.createContainer(Posts, {
     `,
   },
 });
-
-module.exports = PostsContainer;

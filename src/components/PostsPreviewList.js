@@ -8,14 +8,13 @@ import React, {
   Text
 } from 'react-native';
 
-import Relay from 'react-relay';
 import PostsPreviewItem from './PostsPreviewItem';
 
 const _postsDataSource = new ListView.DataSource({
   rowHasChanged: (r1, r2) => r1.__dataID__ !== r2.__dataID__,
 });
 
-class PostsPreviewList extends Component {
+export class PostsPreviewList extends Component {
   constructor(props, context) {
     super(props, context);
     const { edges } = props.root.posts;
@@ -96,6 +95,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-
-module.exports = PostsPreviewList;
