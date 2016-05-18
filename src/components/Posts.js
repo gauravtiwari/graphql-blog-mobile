@@ -1,33 +1,38 @@
 'use strict';
-import React, {
-  Component,
-  NavigatorIOS
+import React, { Component } from 'react';
+import {
+  Navigator
 } from 'react-native';
 
 import Relay from 'react-relay';
 import PostsPreviewList from './PostsPreviewList';
 import PostsPreviewItem from './PostsPreviewItem';
 
-export class Posts extends Component {
+class Posts extends Component {
   constructor(props) {
     super(props);
+    this.renderScene = this.renderScene.bind(this);
   }
 
   render() {
     const { root } = this.props;
     return (
-       <NavigatorIOS
-        initialRoute={{
-          component: PostsPreviewList,
-          title: 'Posts',
-          passProps: { root: root }
-        }}
-      />
+       <Navigator
+        style={{ flex:1 }}
+        initialRoute={{ component: PostsPreviewList }}
+        renderScene={ this.renderScene } />
     );
+  }
+
+  renderScene(route, navigator) {
+    let RouteComponent = route.component
+    return <RouteComponent navigator={navigator} {...route.passProps} {...this.props} />
   }
 }
 
-export const PostsContainer = Relay.createContainer(Posts, {
+export default Posts;
+
+const PostsContainer = Relay.createContainer(Posts, {
   initialVariables: {
     count: 20,
     order: '-id',
@@ -52,3 +57,5 @@ export const PostsContainer = Relay.createContainer(Posts, {
     `,
   },
 });
+
+export default PostsContainer;

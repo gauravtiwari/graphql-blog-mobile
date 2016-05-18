@@ -1,6 +1,6 @@
 'use strict';
-import React, {
-  Component,
+import React, { Component } from 'react';
+import {
   StyleSheet,
   ListView,
   Platform,
@@ -14,7 +14,7 @@ const _postsDataSource = new ListView.DataSource({
   rowHasChanged: (r1, r2) => r1.__dataID__ !== r2.__dataID__,
 });
 
-export class PostsPreviewList extends Component {
+class PostsPreviewList extends Component {
   constructor(props, context) {
     super(props, context);
     const { edges } = props.root.posts;
@@ -65,6 +65,8 @@ export class PostsPreviewList extends Component {
     );
   }
 }
+
+export default PostsPreviewList;
 
 const styles = StyleSheet.create({
   separator: {

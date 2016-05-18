@@ -1,6 +1,6 @@
 'use strict';
-import React, {
-  Component,
+import React, { Component } from 'react';
+import {
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -8,8 +8,10 @@ import React, {
 } from 'react-native';
 
 import Relay from 'react-relay';
+import PostsShow from './PostsShow';
+import PostsShowRoute from '../routes/PostsShowRoute';
 
-export class PostsPreviewItem extends Component {
+class PostsPreviewItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -17,7 +19,7 @@ export class PostsPreviewItem extends Component {
   render() {
     const { post } = this.props;
     return (
-      <TouchableHighlight>
+      <TouchableHighlight onPress={ () => this._navigate() }>
         <View style={styles.post}>
           <Text style={styles.titleText}>{post.title}</Text>
           <Text style={{fontSize: 14}}>{post.excerpt}</Text>
@@ -25,7 +27,16 @@ export class PostsPreviewItem extends Component {
       </TouchableHighlight>
     );
   }
+
+  _navigate(name) {
+    this.props.navigator.push({
+      component: PostShow,
+      routeName: PostsShowRoute
+    });
+  }
 }
+
+export default PostsPreviewItem;
 
 const styles = StyleSheet.create({
   titleText: {
@@ -42,7 +53,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem, {
+const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem, {
   fragments: {
     post: () => Relay.QL`
       fragment on Post {
@@ -62,3 +73,5 @@ export const PostsPreviewItemContainer = Relay.createContainer(PostsPreviewItem,
     `,
   },
 });
+
+export default PostsPreviewItemContainer;
