@@ -19,7 +19,7 @@ class PostsPreviewItem extends Component {
   render() {
     const { post } = this.props;
     return (
-      <TouchableHighlight onPress={ () => this._navigate() }>
+      <TouchableHighlight>
         <View style={styles.post}>
           <Text style={styles.titleText}>{post.title}</Text>
           <Text style={{fontSize: 14}}>{post.excerpt}</Text>
@@ -28,12 +28,13 @@ class PostsPreviewItem extends Component {
     );
   }
 
-  _navigate(name) {
-    this.props.navigator.push({
-      component: PostShow,
-      routeName: PostsShowRoute
-    });
-  }
+  // Fix me
+  // _navigate(name) {
+  //   this.props.navigator.push({
+  //     component: PostShow,
+  //     routeName: PostsShowRoute
+  //   });
+  // }
 }
 
 export default PostsPreviewItem;
