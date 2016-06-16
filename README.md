@@ -12,6 +12,8 @@ npm install
 
 
 ```bash
+git clone git@github.com:gauravtiwari/graphql-blog-mobile.git
+cd graphql-blog-mobile
 npm install
 react-native run-ios --reset-cache
 ```
